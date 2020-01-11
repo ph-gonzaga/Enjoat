@@ -3,6 +3,7 @@ Feature: Restaurantes
     Sendo um usuário que deseja pedir comida
     Posso acessar a lista de restaurantes
 
+    @temp
     Scenario: Todos os restaurantes
 
         When acesso a lista de restaurantes
