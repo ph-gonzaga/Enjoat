@@ -1,14 +1,12 @@
 Given("que tenho uma lista de restaurantes") do
-    @restaurant_data = [
-        { nome: "Bread & Bakery", category: "Padaria", delivery_time: "25 minutos", rating: 4.9 },
-        { nome: "Burguer House", category: "Hamburgers", delivery_time: "30 minutos", rating: 3.5 },
-      ]
+  @restaurant_data = [
+    { nome: "Bread & Bakery", category: "Padaria", delivery_time: "25 minutos", rating: 4.9 },
+    { nome: "Burguer House", category: "Hamburgers", delivery_time: "30 minutos", rating: 3.5 },
+  ]
 end
 
 When("acesso a lista de restaurantes") do
   visit "/restaurants"
-
-  
 end
 
 Then("vejo todas as opções disponíveis") do
