@@ -45,3 +45,32 @@ Then("vejo todos os itens no carrinho") do
     expect(cart).to have_text "(#{p["quantidade"]}x) #{p["nome"]}"
   end
 end
+
+#Remover itens
+
+Given("que eu tenho itens no carrinho:") do |table|
+  @product_list = table.hashes
+
+  @product_list.each do |p|
+    p["quantidade"].to_i.times do
+      find(".menu-item-info-box", text: p["nome"].upcase).find(".add-to-cart").click
+    end
+  end
+end
+
+When("eu removo somente o item {int}") do |item|
+  cart = find("#cart")
+  cart.all("table tbody tr")[item].find(".danger").click
+end
+
+When("eu removo todos os itens") do
+  @product_list.each_with_index do |value, index|
+    cart = find("#cart")
+    cart.all("table tbody tr")[index].find(".danger").click
+  end
+end
+
+Then("vejo a seguinte mensagem no carrinho {string}") do |mensagem|
+    cart = find("#cart")
+    expect(cart).to have_text mensagem
+end
