@@ -19,7 +19,7 @@ Feature: Feature name
         Then 1 unidade(s) deste item deve ser adicionado ao carrinho
         And o valor total deve ser de "R$ 8,70"
 
-    @temp1
+
     Scenario: Adicionar duas unidades
 
         Given que o produto desejado é "Donut"
@@ -27,14 +27,14 @@ Feature: Feature name
         When eu adiciono 2 unidade(s)
         Then 2 unidade(s) deste item devem ser adicionados ao carrinho
         And o valor total deve ser de "R$ 5,00"
-
+        
     Scenario: Adicionar varios itens
 
         Given que o produto desejados são:
-            | nome          | preco    |
-            | Cup Cake      | R$ 8,70  |
-            | Donut         | R$ 2,50  |
-            | Pão artesanal | R$ 15.90 |
+            | nome                   | preco    | quantidade |
+            | Cup Cake               | R$ 8,70  | 1          |
+            | Donut                  | R$ 2,50  | 2          |
+            | Pão Artesanal Italiano | R$ 15.90 | 1          |
         When eu adiciono todos os itens
         Then vejo todos os itens no carrinho
-        And o valor total deve ser de "R$ 27,10"
+        And o valor total deve ser de "R$ 29,60"

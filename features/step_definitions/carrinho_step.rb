@@ -23,3 +23,25 @@ Then("o valor total deve ser de {string}") do |valor_total|
   total = cart.find("tr", text: "Total:").find("td")
   expect(total.text).to have_text valor_total
 end
+
+#lista de produtos
+
+Given("que o produto desejados são:") do |table|
+  @product_list = table.hashes
+end
+
+When("eu adiciono todos os itens") do
+  @product_list.each do |p|
+    p["quantidade"].to_i.times do
+      find(".menu-item-info-box", text: p["nome"].upcase).find(".add-to-cart").click
+    end
+  end
+end
+
+Then("vejo todos os itens no carrinho") do
+  cart = find("#cart")
+  quantidade = 1
+  @product_list.each do |p|
+    expect(cart).to have_text "(#{p["quantidade"]}x) #{p["nome"]}"
+  end
+end
