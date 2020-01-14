@@ -6,7 +6,7 @@ Feature: Cardapio
     Posso acessar o cardapio
 
 
-    Scenario: Produto
+    Scenario: Produto disponivel
 
         When acesso a lista de restaurantes
         And escolho o restaurante "Burger House"
@@ -15,3 +15,8 @@ Feature: Cardapio
             | Classic Burger | O clássico. Não tem como errar | R$ 18,50 |
             | Batatas Fritas | Batatas fritas crocantes       | R$ 5,50  |
             | Refrigerante   | O refri mais gelado da cidade  | R$ 4,50  |
+
+    Scenario: Produto disponivel
+
+        And escolho o restaurante "Burger House"
+        Then vejo a seguinte mensagem no carrinho "Seu carrinho está vazio!"
