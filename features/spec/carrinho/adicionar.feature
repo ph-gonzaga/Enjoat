@@ -1,3 +1,4 @@
+@bread_bakery
 Feature: Feature name
 
     Para que eu possa finalizar uma compra
@@ -10,6 +11,7 @@ Feature: Feature name
     Posso adicionar itens ao meu carrinho
     Para que eu possa finalizar uma compra
 
+    @temp1
     Scenario: Adicionar uma unidade
 
         Given que o produto desejado é "Cup Cake"
