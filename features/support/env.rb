@@ -9,5 +9,5 @@ require "selenium-webdriver"
 Capybara.configure do |config|
   config.default_driver = :selenium_chrome
   config.default_max_wait_time = 10
-  config.app_host = "https://enjoeat-sp1.herokuapp.com"
+  config.app_host = "https://enjoeat-sp2.herokuapp.com"
 end
