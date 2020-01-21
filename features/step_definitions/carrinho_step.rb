@@ -18,7 +18,6 @@ Then("{int} unidade\\(s) deste item deve ser adicionados ao carrinho") do |quant
   puts "(#{quantidade}x) #{@produto_nome}"
 end
 
-
 Then("o valor total deve ser de {string}") do |valor_total|
   cart = find("#cart")
   total = cart.find("tr", text: "Total:").find("td")
@@ -52,11 +51,9 @@ end
 Given("que eu tenho itens no carrinho:") do |table|
   @product_list = table.hashes
 
-  @product_list.each do |p|
-    p["quantidade"].to_i.times do
-      find(".menu-item-info-box", text: p["nome"].upcase).find(".add-to-cart").click
-    end
-  end
+  steps %{
+    When eu adiciono todos os itens
+  }
 end
 
 When("eu removo somente o item {int}") do |item|
@@ -74,4 +71,9 @@ end
 Then("vejo a seguinte mensagem no carrinho {string}") do |mensagem|
   cart = find("#cart")
   expect(cart).to have_text mensagem
+end
+
+#limpar carrinho
+When("eu limpo o meu carrinho") do
+  click_button "Limpar"
 end

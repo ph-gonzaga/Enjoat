@@ -18,7 +18,7 @@ Feature: Feature name
         Then o valor total deve ser de "R$ 18,40"
 
     Scenario Outline: Remover item
-   
+
         When eu removo somente o item <item>
         Then o valor total deve ser de <total>
 
@@ -27,8 +27,14 @@ Feature: Feature name
             | 0    | "R$ 18,40" |
             | 1    | "R$ 24,60" |
             | 2    | "R$ 11,20" |
-            
+
     Scenario: Remover todos os itens
 
         When eu removo todos os itens
+        Then vejo a seguinte mensagem no carrinho "Seu carrinho está vazio!"
+
+    @temp
+    Scenario: Limpar carrinho
+
+        When eu limpo o meu carrinho
         Then vejo a seguinte mensagem no carrinho "Seu carrinho está vazio!"
