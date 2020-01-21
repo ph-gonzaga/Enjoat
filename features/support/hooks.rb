@@ -1,5 +1,7 @@
 Before do
   @cart_page = CartPage.new
+  @rest_list_page = RestaurantListPage.new
+  
   page.current_window.resize_to(1440, 900)
 end
 
