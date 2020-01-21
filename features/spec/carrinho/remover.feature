@@ -27,8 +27,7 @@ Feature: Feature name
             | 0    | "R$ 18,40" |
             | 1    | "R$ 24,60" |
             | 2    | "R$ 11,20" |
-
-    @temp1
+            
     Scenario: Remover todos os itens
 
         When eu removo todos os itens
