@@ -12,11 +12,12 @@ When("eu adiciono {int} unidade\\(s)") do |quantidade|
   end
 end
 
-Then("{int} unidade\\(s) deste item devem ser adicionados ao carrinho") do |quantidade|
+Then("{int} unidade\\(s) deste item deve ser adicionados ao carrinho") do |quantidade|
   cart = find("#cart")
   expect(cart).to have_text "(#{quantidade}x) #{@produto_nome}"
   puts "(#{quantidade}x) #{@produto_nome}"
 end
+
 
 Then("o valor total deve ser de {string}") do |valor_total|
   cart = find("#cart")
@@ -71,6 +72,6 @@ When("eu removo todos os itens") do
 end
 
 Then("vejo a seguinte mensagem no carrinho {string}") do |mensagem|
-    cart = find("#cart")
-    expect(cart).to have_text mensagem
+  cart = find("#cart")
+  expect(cart).to have_text mensagem
 end
