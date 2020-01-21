@@ -8,4 +8,8 @@ class RestaurantListPage
   def list
     all(".restaurant-item")
   end
+
+  def go(restaurant)
+    find(".restaurant-item", text: restaurant.upcase).click
+  end
 end

@@ -8,17 +8,17 @@ end
 
 When("eu adiciono {int} unidade\\(s)") do |quantidade|
   quantidade.times do
-    find(".menu-item-info-box", text: @produto_nome.upcase).find(".add-to-cart").click
+    @rest_page.add_to_cart(@produto_nome)
   end
 end
 
 Then("{int} unidade\\(s) deste item deve ser adicionados ao carrinho") do |quantidade|
-  expect(@cart_page.box).to have_text "(#{quantidade}x) #{@produto_nome}"
+  expect(@rest_page.cart.box).to have_text "(#{quantidade}x) #{@produto_nome}"
   puts "(#{quantidade}x) #{@produto_nome}"
 end
 
 Then("o valor total deve ser de {string}") do |valor_total|
-  expect(@cart.total.text).to have_text valor_total
+  expect(@rest_page.cart.total.text).to have_text valor_total
 end
 
 #lista de produtos
@@ -30,7 +30,7 @@ end
 When("eu adiciono todos os itens") do
   @product_list.each do |p|
     p["quantidade"].to_i.times do
-      find(".menu-item-info-box", text: p["nome"].upcase).find(".add-to-cart").click
+      @rest_page.add_to_cart(p["nome"])
     end
   end
 end
@@ -38,7 +38,7 @@ end
 Then("vejo todos os itens no carrinho") do
   quantidade = 1
   @product_list.each do |p|
-    expect(@cart_page.box).to have_text "(#{p["quantidade"]}x) #{p["nome"]}"
+    expect(@rest_page.cart.box).to have_text "(#{p["quantidade"]}x) #{p["nome"]}"
   end
 end
 
@@ -52,20 +52,20 @@ Given("que eu tenho itens no carrinho:") do |table|
 end
 
 When("eu removo somente o item {int}") do |item|
-  @cart_page.remove_item(item)
+  @rest_page.cart.remove_item(item)
 end
 
 When("eu removo todos os itens") do
   @product_list.each_with_index do |value, index|
-    @cart_page.remove_item(index)
+    @rest_page.cart.remove_item(index)
   end
 end
 
 Then("vejo a seguinte mensagem no carrinho {string}") do |mensagem|
-  expect(@cart_page.box).to have_text mensagem
+  expect(@rest_page.cart.box).to have_text mensagem
 end
 
 #limpar carrinho
 When("eu limpo o meu carrinho") do
-  click_button "Limpar"
+  @rest_page.cart.clean
 end

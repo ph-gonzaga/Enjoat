@@ -1,4 +1,4 @@
-class CartPage
+class CartView
   include Capybara::DSL
 
   def box
@@ -10,6 +10,10 @@ class CartPage
   end
 
   def remove_item(item)
-    box.all("table tbody tr")[index].find(".danger").click
+    box.all("table tbody tr")[item].find(".danger").click
+  end
+
+  def clean
+    click_button "Limpar"
   end
 end
